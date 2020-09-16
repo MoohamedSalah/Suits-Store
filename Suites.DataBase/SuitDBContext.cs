@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Suites.DataBase
 {
-    public class SuitDBContext : DbContext
+    public class SuitDBContext : DbContext , IDisposable
     {
         public SuitDBContext() : base("SuitesDBConection")
         {}

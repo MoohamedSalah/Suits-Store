@@ -29,5 +29,7 @@ namespace SuitsWeb.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Suites.Entities.Category> Categories { get; set; }
     }
 }
