@@ -31,5 +31,7 @@ namespace SuitsWeb.Models
         }
 
         public System.Data.Entity.DbSet<Suites.Entities.Category> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<Suites.Entities.Prodect> Prodects { get; set; }
     }
 }

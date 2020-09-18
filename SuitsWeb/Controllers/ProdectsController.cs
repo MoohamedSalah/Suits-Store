@@ -6,109 +6,120 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Suites.Entities;
 using Suites.Serveres;
 using SuitsWeb.Models;
 
 namespace SuitsWeb.Controllers
 {
-    public class CategoriesController : Controller
+    public class ProdectsController : Controller
     {
-        
-        CatagorySereves catagorySereves = new CatagorySereves(); 
-        // GET: Categories
+        private ApplicationDbContext db = new ApplicationDbContext();
+        ProdectServes ProdectServes = new ProdectServes();
+
+        // GET: Prodects
         public ActionResult Index()
         {
-            return View(catagorySereves.GetCategories());
+            return View();
+        }
+
+        public PartialViewResult prodectTable(string Search)
+        {
+            var prodect = ProdectServes.Getprodects();
+            if(string.IsNullOrEmpty(Search)==false  )
+            {
+                prodect = prodect.Where(p =>p.Name !=null && p.Name.ToLower().Contains(Search.ToLower())).ToList();
+            }
+
+            return PartialView(prodect);
 
         }
 
-        // GET: Categories/Details/5
+        // GET: Prodects/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = catagorySereves.GetoneCategories(id);
-            if (category == null)
+            Prodect prodect = ProdectServes.Getoneprodects(id);
+            if (prodect == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(prodect);
         }
 
-        // GET: Categories/Create
+        // GET: Prodects/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
+        // POST: Prodects/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category category)
+        public ActionResult Create( Prodect prodect)
         {
             if (ModelState.IsValid)
             {
-                catagorySereves.SaveCategories(category);
-
+                ProdectServes.Saveprodects(prodect);
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(prodect);
         }
 
-        // GET: Categories/Edit/5
+        // GET: Prodects/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = catagorySereves.GetoneCategories(id);
-            if (category == null)
+            Prodect prodect = ProdectServes.Getoneprodects(id);
+            if (prodect == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(prodect);
         }
 
-        // POST: Categories/Edit/5
+        // POST: Prodects/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Category category)
+        public ActionResult Edit( Prodect prodect)
         {
             if (ModelState.IsValid)
             {
-                catagorySereves.UpdateCategories(category);
-
+                ProdectServes.Updateprodects(prodect);
                 return RedirectToAction("Index");
             }
-            return View(category);
+            return View(prodect);
         }
 
-        // GET: Categories/Delete/5
+        // GET: Prodects/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = catagorySereves.GetoneCategories(id);
-            if (category == null)
+            Prodect prodect = ProdectServes.Getoneprodects(id);
+            if (prodect == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(prodect);
         }
 
-        // POST: Categories/Delete/5
+        // POST: Prodects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            catagorySereves.DeleteCategories(id);
+            ProdectServes.Deleteprodects(id);
             return RedirectToAction("Index");
         }
 
