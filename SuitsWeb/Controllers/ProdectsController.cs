@@ -15,7 +15,7 @@ namespace SuitsWeb.Controllers
 {
     public class ProdectsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+       
         ProdectServes ProdectServes = new ProdectServes();
 
         // GET: Prodects
@@ -48,13 +48,13 @@ namespace SuitsWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(prodect);
+            return PartialView(prodect);
         }
 
         // GET: Prodects/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Prodects/Create
@@ -65,10 +65,10 @@ namespace SuitsWeb.Controllers
             if (ModelState.IsValid)
             {
                 ProdectServes.Saveprodects(prodect);
-                return RedirectToAction("Index");
+                return RedirectToAction("prodectTable");
             }
 
-            return View(prodect);
+            return PartialView(prodect);
         }
 
         // GET: Prodects/Edit/5
@@ -83,7 +83,7 @@ namespace SuitsWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(prodect);
+            return PartialView(prodect);
         }
 
         // POST: Prodects/Edit/5
@@ -94,9 +94,9 @@ namespace SuitsWeb.Controllers
             if (ModelState.IsValid)
             {
                 ProdectServes.Updateprodects(prodect);
-                return RedirectToAction("Index");
+                return RedirectToAction("prodectTable");
             }
-            return View(prodect);
+            return PartialView(prodect);
         }
 
         // GET: Prodects/Delete/5
@@ -115,12 +115,12 @@ namespace SuitsWeb.Controllers
         }
 
         // POST: Prodects/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
             ProdectServes.Deleteprodects(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("prodectTable");
         }
 
     }

@@ -4,43 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm("prodectTable", "Prodects", "POST"))
-{
-
-    @Html.TextBox("Search", null, new { @class = "form-control"})
-    
-    <input name="Searchbtn" type="button" class="btn btn-info" value="Search" id="Searchbtn" />
-}
+   
 <div id="tablePro">
     @{
         Html.RenderAction("prodectTable");
     }
 </div>
+<div id="opeartionArea">
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
+</div>
 
-
-<script type="text/javascript">
-
-
-    $('#Searchbtn').click(function () {
-
-        var searchVal = $('#Search').val();
-
-        $.ajax({
-            type: 'GET',
-            url: 'prodectTable',
-            data: { Search: searchVal }
-
-        })
-            .done(function (response) {
-                $('#tablePro').html(response);
-            })
-            .fail({
-
-            });
-
-    });
-  
-</script>

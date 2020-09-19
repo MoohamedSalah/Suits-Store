@@ -2,6 +2,15 @@
 
 <h2>prodectTable</h2>
 
+@using (Html.BeginForm("prodectTable", "Prodects", "POST"))
+{
+
+    @Html.TextBox("Search", null, new { @class = "form-control" })
+
+    <input name="Searchbtn" type="button" class="btn btn-info" value="Search" id="Searchbtn" />
+    <input type="button" class="btn btn-primary" value="NEW" id="newBtn" />
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -13,6 +22,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Operation
             </th>
 
         </tr>
@@ -30,9 +42,96 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-
+                <td>
+                    <input type="button" data-id="@item.ID" class="btn btn-warning Edite" value="Edite" />
+                    |
+                    <input type="button" data-id="@item.ID" class="btn btn-danger Delete" value="Delete" />
+                </td>
             </tr>
         }
     </tbody>
 
 </table>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+<script type="text/javascript">
+
+
+
+    $('#Searchbtn').click(function () {
+
+        var searchVal = $('#Search').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/Prodects/prodectTable',
+            data: { Search: searchVal }
+
+        })
+            .done(function (response) {
+                $('#tablePro').html(response);
+                $('#opeartionArea').html("");
+            })
+            .fail({
+
+            });
+
+    });
+
+    $('#newBtn').click(function () {
+
+        $.ajax({
+            type: 'GET',
+            url: '/Prodects/Create',
+        })
+            .done(function (response) {
+                $('#opeartionArea').html(response);
+            })
+            .fail({
+
+            });
+
+    });
+
+    $('.Edite').click(function () {
+
+        $.ajax({
+            type: 'GET',
+            url: '/Prodects/Edit',
+            data: { id: $(this).attr('data-id') }
+        })
+            .done(function (response) {
+                $('#opeartionArea').html(response);
+            })
+            .fail({
+
+            });
+
+    });
+
+    $('.Delete').click(function () {
+
+        var ConfirmDelete = confirm("Are you Wont delete this Item");
+
+        if (ConfirmDelete) {
+            $.ajax({
+                type: 'POST',
+                url: '/Prodects/Delete',
+                data: { id: parseInt($(this).attr("data-id")) }
+            })
+                .done(function (response) {
+                    $('#tablePro').html(response);
+                    $('#opeartionArea').html("");
+                })
+                .fail({
+
+                });
+        }
+
+    });
+
+</script>
