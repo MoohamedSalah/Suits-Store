@@ -99,21 +99,7 @@ namespace SuitsWeb.Controllers
             return PartialView(prodect);
         }
 
-        // GET: Prodects/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Prodect prodect = ProdectServes.Getoneprodects(id);
-            if (prodect == null)
-            {
-                return HttpNotFound();
-            }
-            return View(prodect);
-        }
-
+        
         // POST: Prodects/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]

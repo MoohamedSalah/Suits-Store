@@ -53,7 +53,6 @@
 
 </table>
 
-
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 
@@ -123,9 +122,8 @@
                 url: '/Prodects/Delete',
                 data: { id: parseInt($(this).attr("data-id")) }
             })
-                .done(function (response) {
-                    $('#tablePro').html(response);
-                    $('#opeartionArea').html("");
+                .done( {
+                   
                 })
                 .fail({
 
