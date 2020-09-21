@@ -8,6 +8,7 @@ namespace Suites.Entities
 {
     public  class Category : BaseEntity
     {
+        public string ImageURL { get; set; }
         public List<Prodect> prodects { get; set; }
              
     }

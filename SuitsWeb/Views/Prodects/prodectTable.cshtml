@@ -10,48 +10,49 @@
     <input name="Searchbtn" type="button" class="btn btn-info" value="Search" id="Searchbtn" />
     <input type="button" class="btn btn-primary" value="NEW" id="newBtn" />
 }
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.prise)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                Operation
-            </th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.prise)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <input type="button" data-id="@item.ID" class="btn btn-warning Edite" value="Edite" />
-                    |
-                    <input type="button" data-id="@item.ID" class="btn btn-danger Delete" value="Delete" />
-                </td>
-            </tr>
-        }
-    </tbody>
+                <th>
+                    @Html.DisplayNameFor(model => model.prise)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    Operation
+                </th>
 
-</table>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prise)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <input type="button" data-id="@item.ID" class="btn btn-warning Edite" value="Edite" />
+                        |
+                        <input type="button" data-id="@item.ID" class="btn btn-danger Delete" value="Delete" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
@@ -122,8 +123,8 @@
                 url: '/Prodects/Delete',
                 data: { id: parseInt($(this).attr("data-id")) }
             })
-                .done( {
-                   
+                .done(function (response) {
+                    $('#tablePro').html(response);
                 })
                 .fail({
 

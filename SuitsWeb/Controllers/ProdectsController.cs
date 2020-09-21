@@ -15,7 +15,7 @@ namespace SuitsWeb.Controllers
 {
     public class ProdectsController : Controller
     {
-       
+
         ProdectServes ProdectServes = new ProdectServes();
 
         // GET: Prodects
@@ -27,9 +27,9 @@ namespace SuitsWeb.Controllers
         public PartialViewResult prodectTable(string Search)
         {
             var prodect = ProdectServes.Getprodects();
-            if(string.IsNullOrEmpty(Search)==false  )
+            if (string.IsNullOrEmpty(Search) == false)
             {
-                prodect = prodect.Where(p =>p.Name !=null && p.Name.ToLower().Contains(Search.ToLower())).ToList();
+                prodect = prodect.Where(p => p.Name != null && p.Name.ToLower().Contains(Search.ToLower())).ToList();
             }
 
             return PartialView(prodect);
@@ -60,7 +60,7 @@ namespace SuitsWeb.Controllers
         // POST: Prodects/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Prodect prodect)
+        public ActionResult Create(Prodect prodect)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace SuitsWeb.Controllers
         // POST: Prodects/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( Prodect prodect)
+        public ActionResult Edit(Prodect prodect)
         {
             if (ModelState.IsValid)
             {
@@ -99,10 +99,9 @@ namespace SuitsWeb.Controllers
             return PartialView(prodect);
         }
 
-        
+
         // POST: Prodects/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             ProdectServes.Deleteprodects(id);
