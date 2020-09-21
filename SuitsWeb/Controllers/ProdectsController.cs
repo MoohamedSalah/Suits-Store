@@ -10,6 +10,7 @@ using Microsoft.Ajax.Utilities;
 using Suites.Entities;
 using Suites.Serveres;
 using SuitsWeb.Models;
+using SuitsWeb.ViewModel;
 
 namespace SuitsWeb.Controllers
 {
@@ -17,11 +18,12 @@ namespace SuitsWeb.Controllers
     {
 
         ProdectServes ProdectServes = new ProdectServes();
+        CatagorySereves CatagorySereves = new CatagorySereves();
 
         // GET: Prodects
         public ActionResult Index()
         {
-            return View();
+            return View(ProdectServes.Getprodects());
         }
 
         public PartialViewResult prodectTable(string Search)
@@ -54,7 +56,13 @@ namespace SuitsWeb.Controllers
         // GET: Prodects/Create
         public ActionResult Create()
         {
-            return PartialView();
+            var categorys = CatagorySereves.GetCategories();
+            var viewModel = new VMProductCategory
+            {
+                categories = categorys
+            };
+
+            return PartialView(viewModel);
         }
 
         // POST: Prodects/Create
@@ -62,13 +70,18 @@ namespace SuitsWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Prodect prodect)
         {
+            var categorys = CatagorySereves.GetCategories();
+            var viewModel = new VMProductCategory
+            {
+                categories = categorys
+            };
             if (ModelState.IsValid)
             {
                 ProdectServes.Saveprodects(prodect);
                 return RedirectToAction("prodectTable");
             }
 
-            return PartialView(prodect);
+            return PartialView(viewModel);
         }
 
         // GET: Prodects/Edit/5
@@ -83,6 +96,7 @@ namespace SuitsWeb.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.categoryID = new SelectList(CatagorySereves.GetCategories(), "ID", "Name", prodect.categoryID);
             return PartialView(prodect);
         }
 
@@ -96,6 +110,7 @@ namespace SuitsWeb.Controllers
                 ProdectServes.Updateprodects(prodect);
                 return RedirectToAction("prodectTable");
             }
+            ViewBag.categoryID = new SelectList(CatagorySereves.GetCategories(), "ID", "Name", prodect.categoryID);
             return PartialView(prodect);
         }
 

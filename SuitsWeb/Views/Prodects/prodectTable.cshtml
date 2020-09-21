@@ -3,15 +3,30 @@
 <h2>prodectTable</h2>
 
 @using (Html.BeginForm("prodectTable", "Prodects", "POST"))
-{
+{<div class="row">
+        <div class="col-8">
+            @Html.TextBox("Search", null, new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+          
+            <div class="row">
 
-    @Html.TextBox("Search", null, new { @class = "form-control" })
+                <div class="col-6">
+                    <input  class="btn btn-info form-control" name="Searchbtn" type="button"value="Search" id="Searchbtn" />
+                </div>
 
-    <input name="Searchbtn" type="button" class="btn btn-info" value="Search" id="Searchbtn" />
-    <input type="button" class="btn btn-primary" value="NEW" id="newBtn" />
+
+                <div class="col-6">
+                    <input class="btn btn-primary form-control" name="Newhbtn" type="button" value="NEW" id="newBtn" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
 }
 <div>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>

@@ -17,7 +17,7 @@ namespace Suites.Serveres
          
             using (var db = new SuitDBContext()) 
             {
-                return db.prodects.ToList();
+                return db.prodects.Include(c=>c.Category).ToList();
             
             }
 

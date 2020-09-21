@@ -1,4 +1,5 @@
-﻿@model Suites.Entities.Prodect
+﻿@model SuitsWeb.ViewModel.VMProductCategory
+
 
 @{
     ViewBag.Title = "Create";
@@ -10,41 +11,52 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Prodect</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.prise, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.prise, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.prise, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Create" class="btn btn-primary" id="createBtn" />
-        
-            </div>
+<div class="form-horizontal">
+    <h4>Prodect</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prodect.prise, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Prodect.prise, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Prodect.prise, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prodect.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Prodect.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Prodect.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prodect.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Prodect.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Prodect.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prodect.categoryID , "categoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*
+                Atribute of DropDownList:
+                    (Id & Name,List of item in DrobdowenList(tblname,"column name Debent on","colimn name display"),Defolt or the frist one)
+            *@
+            @Html.DropDownListFor(m => m.Prodect.categoryID, new SelectList(Model.categories, "ID", "Name"), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Prodect.categoryID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" value="Create" class="btn btn-primary" id="createBtn" />
+
+        </div>
+    </div>
+</div>
 }
 
 @Scripts.Render("~/bundles/jquery")
