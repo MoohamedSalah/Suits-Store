@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202009212312152_ISFeatcherINCategory.Designer.cs">
       <DependentUpon>202009212312152_ISFeatcherINCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009222233347_AddConfigrationTable.cs" />
+    <Compile Include="Migrations\202009222233347_AddConfigrationTable.Designer.cs">
+      <DependentUpon>202009222233347_AddConfigrationTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SuitDBContext.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009212312152_ISFeatcherINCategory.resx">
       <DependentUpon>202009212312152_ISFeatcherINCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009222233347_AddConfigrationTable.resx">
+      <DependentUpon>202009222233347_AddConfigrationTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

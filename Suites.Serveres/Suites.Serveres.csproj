@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationsService.cs" />
     <Compile Include="ProdectServes.cs" />
     <Compile Include="CatagorySereves.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
