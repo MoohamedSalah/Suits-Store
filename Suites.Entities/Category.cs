@@ -9,6 +9,7 @@ namespace Suites.Entities
     public  class Category : BaseEntity
     {
         public string ImageURL { get; set; }
+        public bool ISFeatcher { get; set; }
         public List<Prodect> prodects { get; set; }
              
     }

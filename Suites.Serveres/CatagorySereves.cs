@@ -22,6 +22,16 @@ namespace Suites.Serveres
 
         }
 
+        public List<Category> GetCategoriesFeature()
+        {
+            using (var db = new SuitDBContext())
+            {
+                return db.categories.Where(c=>c.ISFeatcher==true&&c.ImageURL!=null).ToList();
+
+            }
+
+        }
+
         public void SaveCategories(Category category )
         {
             using (var db = new SuitDBContext())
