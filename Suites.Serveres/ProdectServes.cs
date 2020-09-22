@@ -22,7 +22,13 @@ namespace Suites.Serveres
             }
 
         }
-
+        public List<Prodect> GetProducts(List<int> IDs)
+        {
+            using (var db = new SuitDBContext())
+            {
+                return db.prodects.Where(product => IDs.Contains(product.ID)).ToList();
+            }
+        }
         public void Saveprodects(Prodect Prodect )
         {
             using (var db = new SuitDBContext())
@@ -33,7 +39,7 @@ namespace Suites.Serveres
             }
         }
 
-        public Prodect Getoneprodects(int? ID)
+        public Prodect Getoneprodect(int? ID)
         {
             using (var db = new SuitDBContext())
             {

@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Delete";
+
+    var imageURL = !string.IsNullOrEmpty(Model.ImageURL) ? Model.ImageURL : "/modaz-Style/images/placeholder-image.png";
 }
 
 <h2>Delete</h2>
@@ -26,10 +28,36 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ISFeatcher)
+        </dt>
+        @if (Model.ISFeatcher)
+        {
+            <dd>
+                <text> True</text>
+            </dd>
+
+        }
+        else
+        {
+            <dd>
+                <text> False</text>
+            </dd>
+        }
+
+        <dd>
+            <div class="col-3">
+                <div class="thumb">
+                    <img src="@imageURL" class="img-thumbnail img-fluid" id="categoryImage" />
+                </div>
+            </div>
+        </dd>
+
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

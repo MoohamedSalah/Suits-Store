@@ -45,7 +45,7 @@ namespace SuitsWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Prodect prodect = ProdectServes.Getoneprodects(id);
+            Prodect prodect = ProdectServes.Getoneprodect(id);
             if (prodect == null)
             {
                 return HttpNotFound();
@@ -91,7 +91,7 @@ namespace SuitsWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Prodect prodect = ProdectServes.Getoneprodects(id);
+            Prodect prodect = ProdectServes.Getoneprodect(id);
             if (prodect == null)
             {
                 return HttpNotFound();

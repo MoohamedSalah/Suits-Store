@@ -173,6 +173,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProdectsController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +183,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\VMCategotryPoductHome.cs" />
+    <Compile Include="ViewModel\VMCheckout.cs" />
     <Compile Include="ViewModel\VMProductCategory.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +298,7 @@
     <Content Include="modaz-Style\images\pattern\7.png" />
     <Content Include="modaz-Style\images\pattern\8.png" />
     <Content Include="modaz-Style\images\pattern\9.png" />
+    <Content Include="modaz-Style\images\placeholder-image.png" />
     <Content Include="modaz-Style\images\shop\s-01.jpg" />
     <Content Include="modaz-Style\images\shop\s-02.jpg" />
     <Content Include="modaz-Style\images\shop\s-03.jpg" />
@@ -538,6 +541,7 @@
     <Content Include="Views\Prodects\Edit.cshtml" />
     <Content Include="Views\Prodects\Index.cshtml" />
     <Content Include="Views\Prodects\prodectTable.cshtml" />
+    <Content Include="Views\Shop\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

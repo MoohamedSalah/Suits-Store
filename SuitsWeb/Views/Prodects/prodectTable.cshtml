@@ -61,6 +61,8 @@
                         <input type="button" data-id="@item.ID" class="btn btn-warning Edite" value="Edite" />
                         |
                         <input type="button" data-id="@item.ID" class="btn btn-danger Delete" value="Delete" />
+                        |
+                        <input type="button" data-id="@item.ID" class="btn btn-primary Carts" value="Add To Cart" />
                     </td>
                 </tr>
             }
@@ -111,6 +113,19 @@
             });
 
     });
+    var products = [];
+    $(".Carts").click(function () {
+
+        var productID = $(this).attr('data-id');
+        
+        products.push(productID);
+     
+        $.cookie('CartProducts', products.join('-'), { path: '/' });
+       
+        alert("Product added to Cart.");
+    });
+
+
 
     $('.Edite').click(function () {
 
