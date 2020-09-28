@@ -61,25 +61,25 @@ namespace SuitsWeb.Controllers
             {
                 categories = categorys
             };
-
+            
             return PartialView(viewModel);
         }
 
         // POST: Prodects/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Prodect prodect)
+        public ActionResult Create(Prodect prodect )
         {
+            if (ModelState.IsValid)
+            {
+                ProdectServes.Saveprodects(prodect );
+                return RedirectToAction("prodectTable");
+            }
             var categorys = CatagorySereves.GetCategories();
             var viewModel = new VMProductCategory
             {
                 categories = categorys
             };
-            if (ModelState.IsValid)
-            {
-                ProdectServes.Saveprodects(prodect);
-                return RedirectToAction("prodectTable");
-            }
 
             return PartialView(viewModel);
         }

@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202009222233347_AddConfigrationTable.Designer.cs">
       <DependentUpon>202009222233347_AddConfigrationTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009272249504_imageUrltoproduct.cs" />
+    <Compile Include="Migrations\202009272249504_imageUrltoproduct.Designer.cs">
+      <DependentUpon>202009272249504_imageUrltoproduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SuitDBContext.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009222233347_AddConfigrationTable.resx">
       <DependentUpon>202009222233347_AddConfigrationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009272249504_imageUrltoproduct.resx">
+      <DependentUpon>202009272249504_imageUrltoproduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

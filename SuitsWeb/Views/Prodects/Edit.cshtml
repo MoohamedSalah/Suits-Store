@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    var imageURL = !string.IsNullOrEmpty(Model.ImageURL) ? Model.ImageURL : "/modaz-Style/images/placeholder-image.png";
 }
 
 <h2>Edit</h2>
@@ -10,49 +11,64 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Prodect</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.ID)
+    <div class="form-horizontal">
+        <div class=" row ">
+            <h4>Prodect</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+            <div class=" col-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.prise, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.prise, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.prise, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.prise, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.prise, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.prise, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.categoryID, "categoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("categoryID", null, htmlAttributes: new { @class = "form-control", autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.categoryID, "", new { @class = "text-danger" })
+                    </div>
+                </div><div class="form-group">
+                    <label>Image</label>
+                    <input type="hidden" id="ImageURL" name="ImageURL" />
+                    <input class="form-control" id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" value="Create" class="btn btn-primary" id="createBtn" />
+                        <button id="cancelBtn" type="button" class="btn btn-primary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="thumb">
+                    <img src="@imageURL" class="img-thumbnail img-fluid" id="categoryImage" />
+                </div>
+            </div>
+
+
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.categoryID , "categoryID", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("categoryID", null, htmlAttributes: new { @class = "form-control", autofocus = "autofocus" })
-            @Html.ValidationMessageFor(model => model.categoryID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="button" value="Create" class="btn btn-primary" id="createBtn" />
-        </div>
-    </div>
-</div>
 }
 
 @Scripts.Render("~/bundles/jquery")
@@ -68,12 +84,50 @@
             .done(function (response) {
                 $('#tablePro').html(response);
                 $('#opeartionArea').html("");
+                focusAction("tablePro");
             })
             .fail({
 
             });
 
 
+    });
+   $("#imageUpload").change(function () {
+		var element = this;
+
+		var formData = new FormData();
+
+		var totalFiles = element.files.length;
+
+		for (var i = 0; i < totalFiles; i++) {
+			var file = element.files[i];
+			formData.append("Photo", file);
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: '@Url.Action("UploadImage", "Shared")',
+			dataType: 'json',
+			data: formData,
+			contentType: false,
+			processData: false
+		})
+        .done(function (response) {
+        	console.log(response);
+
+        	if(response.Success)
+        	{
+        		$("#ImageURL").val(response.ImageURL);
+        		$("#categoryImage").attr("src", response.ImageURL);
+        	}
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+    });
+    $("#cancelBtn").click(function () {
+        $("#opeartionArea").html("");
+        focusAction("tablePro");
     });
 
 </script>

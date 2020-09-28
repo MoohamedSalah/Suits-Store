@@ -7,56 +7,65 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm("Create", "Prodects", FormMethod.Post, new { @id="createProduct"}))
+@using (Html.BeginForm("Create", "Prodects", FormMethod.Post, new { @id = "createProduct" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Prodect</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Prodect.prise, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Prodect.prise, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Prodect.prise, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>Prodect</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Prodect.prise, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prodect.prise, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prodect.prise, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Prodect.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Prodect.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Prodect.Name, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Prodect.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prodect.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prodect.Name, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Prodect.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Prodect.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Prodect.Description, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Prodect.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prodect.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prodect.Description, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Prodect.categoryID , "categoryID", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @*
-                Atribute of DropDownList:
-                    (Id & Name,List of item in DrobdowenList(tblname,"column name Debent on","colimn name display"),Defolt or the frist one)
-            *@
-            @Html.DropDownListFor(m => m.Prodect.categoryID, new SelectList(Model.categories, "ID", "Name"), htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Prodect.categoryID, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Prodect.categoryID, "categoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*
+                    Atribute of DropDownList:
+                        (Id & Name,List of item in DrobdowenList(tblname,"column name Debent on","colimn name display"),Defolt or the frist one)
+                *@
+                @Html.DropDownListFor(m => m.Prodect.categoryID, new SelectList(Model.categories, "ID", "Name"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Prodect.categoryID, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="button" value="Create" class="btn btn-primary" id="createBtn" />
+        <div class="form-group">
+            <label>Image</label>
+            <div class="col-md-10">
+                <input type="hidden" id="ImageURL" name="Prodect.ImageURL" />
+                <input class="form-control" id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
 
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Create" class="btn btn-primary" id="createBtn" />
+                <button id="cancelBtn" type="button" class="btn btn-primary">Cancel</button>
+            </div>
         </div>
     </div>
-</div>
 }
 
 @Scripts.Render("~/bundles/jquery")
@@ -75,18 +84,58 @@
                 $.ajax({
                     type: 'GET',
                     url: '/Prodects',
-                    
+
                 })
                     .done(function (response) {
                         $('#tablePro').html(response);
                         $('#opeartionArea').html("");
+                        focusAction("tablePro");
                     })
             })
             .fail({
 
             });
-        
+
 
     });
-   
+
+   $("#imageUpload").change(function () {
+		var element = this;
+
+		var formData = new FormData();
+
+		var totalFiles = element.files.length;
+
+		for (var i = 0; i < totalFiles; i++) {
+			var file = element.files[i];
+			formData.append("Photo", file);
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: '@Url.Action("UploadImage", "Shared")',
+			dataType: 'json',
+			data: formData,
+			contentType: false,
+			processData: false
+		})
+        .done(function (response) {
+        	console.log(response);
+
+        	if(response.Success)
+        	{
+        		$("#ImageURL").val(response.ImageURL);
+        		$("#categoryImage").attr("src", response.ImageURL);
+        	}
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+   });
+
+    $("#cancelBtn").click(function () {
+        $("#opeartionArea").html("");
+        focusAction("tablePro");
+    });
+
 </script>

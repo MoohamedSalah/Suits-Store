@@ -117,6 +117,8 @@
             })
                 .done(function (response) {
                     $('#opeartionArea').html(response);
+
+                    focusAction("opeartionArea");
                 })
                 .fail({
 
@@ -147,6 +149,7 @@
             })
                 .done(function (response) {
                     $('#opeartionArea').html(response);
+                    focusAction("opeartionArea");
                 })
                 .fail({
 
@@ -166,6 +169,7 @@
                 })
                     .done(function (response) {
                         $('#tablePro').html(response);
+                        focusAction("tablePro");
                     })
                     .fail({
 
