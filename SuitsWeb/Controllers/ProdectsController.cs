@@ -72,16 +72,20 @@ namespace SuitsWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                ProdectServes.Saveprodects(prodect );
+                ProdectServes.Saveprodects(prodect);
                 return RedirectToAction("prodectTable");
             }
-            var categorys = CatagorySereves.GetCategories();
-            var viewModel = new VMProductCategory
+            else
             {
-                categories = categorys
-            };
+                return new HttpStatusCodeResult(500);
+            }
+            //var categorys = CatagorySereves.GetCategories();
+            //var viewModel = new VMProductCategory
+            //{
+            //    categories = categorys
+            //};
 
-            return PartialView(viewModel);
+            //return PartialView(viewModel);
         }
 
         // GET: Prodects/Edit/5
