@@ -45,12 +45,15 @@ namespace SuitsWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Prodect prodect = ProdectServes.Getoneprodect(id);
-            if (prodect == null)
+            
+            ProductViewModel productViewModel = new ProductViewModel();
+            productViewModel.Product = ProdectServes.Getoneprodect(id);
+
+            if (productViewModel.Product == null)
             {
                 return HttpNotFound();
             }
-            return PartialView(prodect);
+            return View(productViewModel);
         }
 
         // GET: Prodects/Create

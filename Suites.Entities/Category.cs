@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Suites.Entities
 {
-    public  class Category : BaseEntity
+    public partial class Category : BaseEntity
     {
         public string ImageURL { get; set; }
         public bool ISFeatcher { get; set; }

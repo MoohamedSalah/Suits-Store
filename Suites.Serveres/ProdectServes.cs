@@ -29,6 +29,32 @@ namespace Suites.Serveres
                 return db.prodects.Where(product => IDs.Contains(product.ID)).ToList();
             }
         }
+
+        public List<Prodect> GetLatestProducts(int numberOfProducts)
+        {
+            using (var context = new SuitDBContext())
+            {
+                return context.prodects.OrderByDescending(x => x.ID).Take(numberOfProducts).Include(x => x.Category).ToList();
+            }
+        }
+
+
+        public List<Prodect> GetProductsByCategory(int categoryID, int pageSize)
+        {
+            using (var context = new SuitDBContext())
+            {
+                return context.prodects.Where(x => x.Category.ID == categoryID).OrderByDescending(x => x.ID).Take(pageSize).Include(x => x.Category).ToList();
+            }
+        }
+
+        public List<Prodect> GetProducts(int pageNo, int pageSize)
+        {
+            using (var context = new SuitDBContext())
+            {
+                return context.prodects.OrderByDescending(x => x.ID).Skip((pageNo - 1) * pageSize).Take(pageSize).Include(x => x.Category).ToList();
+            }
+        }
+
         public void Saveprodects(Prodect Prodect )
         {
             using (var db = new SuitDBContext())
@@ -43,7 +69,7 @@ namespace Suites.Serveres
         {
             using (var db = new SuitDBContext())
             {
-                return db.prodects.Find(ID);
+                return db.prodects.Where(x=>x.ID ==ID).Include(x=>x.Category).SingleOrDefault();
 
             }
 

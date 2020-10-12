@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Categorys.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Prodect.cs" />
     <Compile Include="Products.cs" />
