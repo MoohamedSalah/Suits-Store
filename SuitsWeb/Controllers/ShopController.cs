@@ -30,5 +30,11 @@ namespace SuitsWeb.Controllers
 
             return View(model);
         }
+
+        //public ActionResult Index()
+        //{
+            
+        //}
+
     }
 }

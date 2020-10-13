@@ -565,6 +565,7 @@
     <Content Include="modaz-Style\images\shop\sh-detail\thumb-detail-10.jpg" />
     <Content Include="modaz-Style\images\shop\sh-detail\thumb-detail-11.jpg" />
     <Content Include="modaz-Style\images\shop\sh-detail\thumb-detail-12.jpg" />
+    <Content Include="modaz-Style\images\slay.png" />
     <Content Include="modaz-Style\images\slider\slider-bg-1.jpg" />
     <Content Include="modaz-Style\images\slider\slider-bg-2.jpg" />
     <Content Include="modaz-Style\images\slider\slider-bg-3.jpg" />
@@ -782,6 +783,7 @@
     <Content Include="Views\Prodects\prodectTable.cshtml" />
     <Content Include="Views\Shop\Checkout.cshtml" />
     <Content Include="Views\Widgests\Products.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
