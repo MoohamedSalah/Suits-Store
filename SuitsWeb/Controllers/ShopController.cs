@@ -10,7 +10,8 @@ namespace SuitsWeb.Controllers
 {
     public class ShopController : Controller
     {
-        ProdectServes ProdectServes = new ProdectServes();
+        ProdectServes ProductsService = new ProdectServes();
+        CatagorySereves CategoriesService = new CatagorySereves();
         public ActionResult Checkout()
         {
             VMCheckout  model = new VMCheckout();
@@ -25,16 +26,36 @@ namespace SuitsWeb.Controllers
 
                 model.CartProductIDs = CartProductsCookie.Value.Split('-').Select(x => int.Parse(x)).ToList();
 
-                model.CartProducts = ProdectServes.GetProducts(model.CartProductIDs);
+                model.CartProducts = ProductsService.GetProducts(model.CartProductIDs);
             }
 
             return View(model);
         }
 
-        //public ActionResult Index()
-        //{
-            
-        //}
+        public ActionResult Index(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryID, int? sortBy)
+        {
+            ShopViewModel model = new ShopViewModel();
+
+            model.FeaturedCategories = CategoriesService.GetCategoriesFeature();
+
+            model.MaximumPrice = ProductsService.GetMaximumPrice();
+
+            model.Products = ProductsService.SearchProducts(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy);
+
+            model.SortBy = sortBy;
+
+            return View(model);
+        }
+
+        public ActionResult FilterProducts(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryID, int? sortBy)
+        {
+            FilterProductsViewModel model = new FilterProductsViewModel();
+
+            model.Products = ProductsService.SearchProducts(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy);
+
+            return PartialView(model);
+        }
+
 
     }
 }

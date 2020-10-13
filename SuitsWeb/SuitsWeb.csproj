@@ -167,6 +167,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Code\SortBy.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -183,8 +184,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\FilterProductsViewModel.cs" />
     <Compile Include="ViewModel\ProductsWidgetViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="ViewModel\VMCategotryPoductHome.cs" />
     <Compile Include="ViewModel\VMCheckout.cs" />
     <Compile Include="ViewModel\VMProductCategory.cs" />

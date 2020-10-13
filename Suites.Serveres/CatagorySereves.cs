@@ -60,6 +60,7 @@ namespace Suites.Serveres
 
             }
         }
+
         public void  DeleteCategories(int ID)
         {
             using (var db = new SuitDBContext())
