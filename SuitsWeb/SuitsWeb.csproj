@@ -787,6 +787,7 @@
     <Content Include="Views\Shop\Checkout.cshtml" />
     <Content Include="Views\Widgests\Products.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Shop\FilterProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

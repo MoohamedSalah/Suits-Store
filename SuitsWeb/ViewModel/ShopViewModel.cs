@@ -12,5 +12,8 @@ namespace SuitsWeb.ViewModel
         public int MaximumPrice { get;  set; }
         public List<Prodect>  Products { get;  set; }
         public int? SortBy { get; set; }
+        public string SearchTerm { get; set; }
+        public int? CategoryID { get;  set; }
+        public Pager Pager { get;  set; }
     }
 }

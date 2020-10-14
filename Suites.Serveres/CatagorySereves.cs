@@ -73,5 +73,12 @@ namespace Suites.Serveres
 
         }
 
+        public List<Category> GetFeaturedCategories()
+        {
+            using (var context = new SuitDBContext())
+            {
+                return context.categories.Where(x => x.ISFeatcher  && x.ImageURL != null).ToList();
+            }
+        }
     }
 }

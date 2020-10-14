@@ -33,5 +33,15 @@ namespace Suites.Serveres
                 return db.Configration.Find(Key);
             }
         }
+
+        public int ShopPageSize()
+        {
+            using (var context = new SuitDBContext())
+            {
+                var pageSizeConfig = context.Configration.Find("ShopPageSize");
+
+                return pageSizeConfig != null ? int.Parse(pageSizeConfig.Value) : 6;
+            }
+        }
     }
 }

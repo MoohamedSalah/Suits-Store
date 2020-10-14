@@ -12,6 +12,7 @@ namespace SuitsWeb.Controllers
     {
         ProdectServes ProductsService = new ProdectServes();
         CatagorySereves CategoriesService = new CatagorySereves();
+        
         public ActionResult Checkout()
         {
             VMCheckout  model = new VMCheckout();
@@ -32,29 +33,49 @@ namespace SuitsWeb.Controllers
             return View(model);
         }
 
-        public ActionResult Index(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryID, int? sortBy)
+        public ActionResult Index(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryID, int? sortBy, int? pageNo)
         {
+            var pageSize = ConfigurationsService.Instance.ShopPageSize();
+
             ShopViewModel model = new ShopViewModel();
 
-            model.FeaturedCategories = CategoriesService.GetCategoriesFeature();
-
+            model.SearchTerm = searchTerm;
+            model.FeaturedCategories = CategoriesService.GetFeaturedCategories();
             model.MaximumPrice = ProductsService.GetMaximumPrice();
 
-            model.Products = ProductsService.SearchProducts(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy);
-
+            pageNo = pageNo.HasValue ? pageNo.Value > 0 ? pageNo.Value : 1 : 1;
             model.SortBy = sortBy;
+            model.CategoryID = categoryID;
+
+            int totalCount = ProductsService.SearchProductsCount(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy);
+            model.Products = ProductsService.SearchProducts(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy, pageNo.Value, pageSize);
+
+            model.Pager = new Pager(totalCount, pageNo, (int)pageSize);
 
             return View(model);
         }
 
-        public ActionResult FilterProducts(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryID, int? sortBy)
+      
+
+        public ActionResult FilterProducts(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryID, int? sortBy, int? pageNo)
         {
+            var pageSize = ConfigurationsService.Instance.ShopPageSize();
+
             FilterProductsViewModel model = new FilterProductsViewModel();
 
-            model.Products = ProductsService.SearchProducts(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy);
+            model.SearchTerm = searchTerm;
+            pageNo = pageNo.HasValue ? pageNo.Value > 0 ? pageNo.Value : 1 : 1;
+            model.SortBy = sortBy;
+            model.CategoryID = categoryID;
+
+            int totalCount = ProductsService.SearchProductsCount(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy);
+            model.Products = ProductsService.SearchProducts(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy, pageNo.Value, pageSize);
+
+            model.Pager = new Pager(totalCount, pageNo, (int)pageSize);
 
             return PartialView(model);
         }
+
 
 
     }

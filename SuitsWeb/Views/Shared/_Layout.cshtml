@@ -28,14 +28,17 @@
     <!-- Favicon and touch icons  -->
     <link href="favicon.png" rel="shortcut icon">
 
+
     <script src="~/modaz-Style/javascript/jquery.min.js"></script>
-    <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="~/modaz-Style/javascript/jquery-ui.js"></script>
+    @*<script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>*@
     <script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
         <script src="~/modaz-Style/javascript/html5shiv.js"></script>
         <script src="~/modaz-Style/javascript/respond.min.js"></script>
     <![endif]-->
+    
 </head>
 
 <body class="header_sticky header-style-2 has-menu-extra">
@@ -63,9 +66,15 @@
                                 <button type="submit" class="header-search-submit" title="Search">Search</button>
                             </form>
                         </li>
-                        <li class="box-login">
-                            <a class="icon_login" href="#"></a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="box-login">
+                                <a class="icon_login" href="#">
+                                    @User.Identity.Name
+                                </a>
+                            </li>
+                        }
+
                         <li class="box-cart nav-top-cart-wrapper">
                             <a class="icon_cart nav-cart-trigger active" href="#"><span>3</span></a>
                             <div class="nav-shop-cart">
@@ -95,35 +104,35 @@
                                     <a href="@Url.Action("Checkout","Shop")">Checkout</a>
                                 </li>
                                 <!--<li>
-                                    <a href="coming-soon.html">PAGE</a>
-                                    <ul class="submenu">
-                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                        <li><a href="404.html"> Error 404</a></li>
-                                        <li><a href="faqs.html">FAQs</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="blog-list.html">BLOG</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog-list.html">Blog List Full</a></li>
-                                        <li><a href="blog-list-1.html">Blog list Slide 1</a></li>
-                                        <li><a href="blog-list-2.html">Blog list Slide 2</a></li>
-                                        <li><a href="blog-grid.html">Blog Gird Full</a></li>
-                                        <li><a href="blog-grid-1.html">Blog Gird Slide</a></li>
-                                        <li><a href="blog-detail.html">Blog Details</a></li>
-                                    </ul>-->
+                    <a href="coming-soon.html">PAGE</a>
+                    <ul class="submenu">
+                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                        <li><a href="404.html"> Error 404</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="blog-list.html">BLOG</a>
+                    <ul class="submenu">
+                        <li><a href="blog-list.html">Blog List Full</a></li>
+                        <li><a href="blog-list-1.html">Blog list Slide 1</a></li>
+                        <li><a href="blog-list-2.html">Blog list Slide 2</a></li>
+                        <li><a href="blog-grid.html">Blog Gird Full</a></li>
+                        <li><a href="blog-grid-1.html">Blog Gird Slide</a></li>
+                        <li><a href="blog-detail.html">Blog Details</a></li>
+                    </ul>-->
                                 <!-- /.submenu -->
                                 <!--</li>
-                                <li>
-                                    <a href="contact.html">CONTACT</a>
-                                    <ul class="submenu right-submenu">
-                                        <li><a href="contact.html">Contact Style 1</a></li>
-                                        <li><a href="contact-v2.html">Contact Style 2</a></li>
-                                    </ul>
-                                </li>-->
+                <li>
+                    <a href="contact.html">CONTACT</a>
+                    <ul class="submenu right-submenu">
+                        <li><a href="contact.html">Contact Style 1</a></li>
+                        <li><a href="contact-v2.html">Contact Style 2</a></li>
+                    </ul>
+                </li>-->
                                 @*<li>
-                                        @Html.Partial("_LoginPartial")
-                                    </li>*@
+                        @Html.Partial("_LoginPartial")
+                    </li>*@
                             </ul>
                         </nav><!-- /.mainnav -->
                     </div><!-- /.nav-wrap -->
@@ -249,7 +258,7 @@
     <script src="~/modaz-Style/javascript/equalize.min.js"></script>
     <script src="~/modaz-Style/javascript/gmap3.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIEU6OT3xqCksCetQeNLIPps6-AYrhq-s&region=GB"></script>
-    <script src="~/modaz-Style/javascript/jquery-ui.js"></script>
+
 
     <script src="~/modaz-Style/javascript/jquery.cookie.js"></script>
     <script src="~/modaz-Style/javascript/main.js"></script>
