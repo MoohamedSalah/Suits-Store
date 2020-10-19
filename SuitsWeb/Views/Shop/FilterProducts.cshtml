@@ -82,6 +82,7 @@
 
     var products;
     $(".productAddToCart").click(function () {
+        
         var existingCookieData = $.cookie('CartProducts');
 
         if (existingCookieData != undefined && existingCookieData != "" && existingCookieData != null) {
@@ -96,7 +97,7 @@
         products.push(productID);
 
         $.cookie('CartProducts', products.join('-'), { path: '/' });
-
+        swal("Done", "Product Added to Cart!", "success");
         updateCartProducts();
 
         swal("Done", "Product Added to Cart!", "success");

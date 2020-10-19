@@ -88,7 +88,11 @@
             text = '</div><div class="text">';
         if ($().countdown) {
             $(".countdown").countdown('2018/6/22', function (event) {
-                $(this).html(event.strftime(before    '%D'    text    'Days</div></div>'    before    '%H'    text    'Hours</div></div>'    before    '%M'    text    'Minutes</div></div>'    before    '%S'    text    'Seconds</div>'));
+                $(this).html(event.strftime(before +'%D'+ 
+                    text    +'Days</div></div>'+    before
+                    +'%H'+    text    +'Hours</div></div>'+
+                    before    +'%M'+    text    +'Minutes</div></div>'+ 
+                    before    +'%S'+    text    +'Seconds</div>'));
             });
         }
     };
@@ -464,7 +468,7 @@
             var numberValue = $(this).parent().find('.quantity-number').val();
 
             if ($(this).text() == "  ") {
-                var newVal = parseFloat(numberValue)    1;
+                var newVal = parseFloat(numberValue)+1;
             } else {
                 if (numberValue > 0) {
                     var newVal = parseFloat(numberValue) - 1;
@@ -766,9 +770,9 @@
 
                 if (margin) {
                     if (mode == 'desktop') {
-                        $(this).attr('style', 'margin:'   $(this).data('margin'))
+                        $(this).attr('style', 'margin:'+   $(this).data('margin'))
                     } else if (mode == 'mobile') {
-                        $(this).attr('style', 'margin'    $(this).data('mobilemargin'))
+                        $(this).attr('style', 'margin'+    $(this).data('mobilemargin'))
                     }
                 }
             });
@@ -795,7 +799,7 @@
             $('.sw-pattern').on('click', function () {
                 $('.sw-pattern.pattern a').removeClass('current');
                 $(this).addClass('current');
-                $('body').css({ 'background': 'url("'    $(this).data('image')    '")', 'background-size': '30px 30px', 'background-repeat': 'repeat' });
+                $('body').css({ 'background': 'url("'    +$(this).data('image')+    '")', 'background-size': '30px 30px', 'background-repeat': 'repeat' });
                 return false
             })
         }
@@ -804,8 +808,23 @@
         activePattern();
     };
 
+    var updateCartProducts = function () {
+        var cartProducts;
+        var existingCookieData = $.cookie('CartProducts');
+
+        if (existingCookieData != undefined && existingCookieData != "" && existingCookieData != null) {
+            cartProducts = existingCookieData.split('-');
+        }
+        else {
+            cartProducts = [];
+        }
+
+        $("#cartProductsCount").html(cartProducts.length);
+    };
+
     // Dom Ready
     $(function () {
+        updateCartProducts();
         removePreloader();
         goTop();
         parallax();
@@ -832,20 +851,7 @@
         flatIsotope();
         flatCarouselOwl();
         flatContentBox();
-        updateCartProducts();
+       
     });
 })(jQuery);
 
-function updateCartProducts() {
-    var cartProducts;
-    var existingCookieData = $.cookie('CartProducts');
-
-    if (existingCookieData != undefined && existingCookieData != "" && existingCookieData != null) {
-        cartProducts = existingCookieData.split('-');
-    }
-    else {
-        cartProducts = [];
-    }
-
-    $("#cartProductsCount").html(cartProducts.length);
-};
