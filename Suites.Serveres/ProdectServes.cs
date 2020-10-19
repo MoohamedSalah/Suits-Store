@@ -12,6 +12,21 @@ namespace Suites.Serveres
  
     public class ProdectServes
     {
+        #region Singleton
+        public static ProdectServes Instance
+        {
+            get
+            {
+                if (instance == null) instance = new ProdectServes();
+
+                return instance;
+            }
+        }
+        private static ProdectServes instance { get; set; }
+        private ProdectServes()
+        {
+        }
+        #endregion
         public List<Prodect> Getprodects ()
         {
          

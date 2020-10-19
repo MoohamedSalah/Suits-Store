@@ -86,15 +86,15 @@
 </section><!-- /.flat-row -->
 
 <script>
-
 	var callTimeout;
 	var priceSlider = $("#slide-range").slider({
 		range: true,
 		min: 0,
-		max: @Model.MaximumPrice,
-		slide: function (event, ui) {
-            var minPrice = ui.min;
-            var maxPrice = ui.max;
+        max: @Model.MaximumPrice,
+        values: [0, @Model.MaximumPrice],
+        slide: function (event, ui) {
+            var minPrice = ui.values[0];
+            var maxPrice = ui.values[1];
 
 			$("#amount").val("$" + minPrice + ".00" + " - " + "$" + maxPrice + ".00");
 
@@ -112,7 +112,7 @@
 	});
 
 	function GetData(dUrl){
-		
+
 		$.ajax({
 			url: dUrl,
 			data: {
@@ -127,7 +127,7 @@
         	alert("FAIL");
         })
 		.always(function(){
-			
+
 		});
 	}
 

@@ -15,6 +15,8 @@ namespace Suites.DataBase
          public DbSet<Prodect> prodects { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Config> Configration { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
     }
 }

@@ -10,7 +10,7 @@ namespace SuitsWeb.Controllers
 {
     public class WidgestsController : Controller
     {
-        ProdectServes ProductsService = new ProdectServes();
+       
         // GET: Widgets
         public ActionResult Products(bool isLatestProducts, int? CategoryID = 0)
         {
@@ -19,15 +19,15 @@ namespace SuitsWeb.Controllers
 
             if (isLatestProducts)
             {
-                model.Products = ProductsService.GetLatestProducts(4);
+                model.Products = ProdectServes.Instance.GetLatestProducts(4);
             }
             else if (CategoryID.HasValue && CategoryID.Value > 0)
             {
-                model.Products = ProductsService.GetProductsByCategory(CategoryID.Value, 4);
+                model.Products =  ProdectServes.Instance.GetProductsByCategory(CategoryID.Value, 4);
             }
             else
             {
-                model.Products = ProductsService.GetProducts(1, 8);
+                model.Products =  ProdectServes.Instance.GetProducts(1, 8);
             }
 
             return PartialView(model);

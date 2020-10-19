@@ -14,12 +14,11 @@ namespace SuitsWeb.Controllers
 {
     public class CategoriesController : Controller
     {
-        
-        CatagorySereves catagorySereves = new CatagorySereves(); 
+       
         // GET: Categories
         public ActionResult Index()
         {
-            return View(catagorySereves.GetCategories());
+            return View(CatagorySereves.Instance.GetCategories());
 
         }
 
@@ -30,7 +29,7 @@ namespace SuitsWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = catagorySereves.GetoneCategories(id);
+            Category category = CatagorySereves.Instance.GetoneCategories(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -51,7 +50,7 @@ namespace SuitsWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                catagorySereves.SaveCategories(category);
+                CatagorySereves.Instance.SaveCategories(category);
 
                 return RedirectToAction("Index");
             }
@@ -66,7 +65,7 @@ namespace SuitsWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = catagorySereves.GetoneCategories(id);
+            Category category = CatagorySereves.Instance.GetoneCategories(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -81,7 +80,7 @@ namespace SuitsWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                catagorySereves.UpdateCategories(category);
+                CatagorySereves.Instance.UpdateCategories(category);
 
                 return RedirectToAction("Index");
             }
@@ -95,7 +94,7 @@ namespace SuitsWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = catagorySereves.GetoneCategories(id);
+            Category category = CatagorySereves.Instance.GetoneCategories(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -108,7 +107,7 @@ namespace SuitsWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            catagorySereves.DeleteCategories(id);
+            CatagorySereves.Instance.DeleteCategories(id);
             return RedirectToAction("Index");
         }
 

@@ -179,11 +179,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010191755138_migrated.cs" />
+    <Compile Include="Migrations\202010191755138_migrated.Designer.cs">
+      <DependentUpon>202010191755138_migrated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\CheckoutViewModel.cs" />
     <Compile Include="ViewModel\FilterProductsViewModel.cs" />
     <Compile Include="ViewModel\ProductsWidgetViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
@@ -819,6 +825,11 @@
       <Project>{c2014a39-0d5c-4c08-b2eb-436c690ccc48}</Project>
       <Name>Suites.Serveres</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010191755138_migrated.resx">
+      <DependentUpon>202010191755138_migrated.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

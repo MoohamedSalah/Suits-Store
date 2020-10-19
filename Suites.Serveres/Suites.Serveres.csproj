@@ -52,6 +52,7 @@
     <Compile Include="ProdectServes.cs" />
     <Compile Include="CatagorySereves.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

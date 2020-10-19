@@ -16,19 +16,15 @@ namespace SuitsWeb.Controllers
 {
     public class ProdectsController : Controller
     {
-
-        ProdectServes ProdectServes = new ProdectServes();
-        CatagorySereves CatagorySereves = new CatagorySereves();
-
         // GET: Prodects
         public ActionResult Index()
         {
-            return View(ProdectServes.Getprodects());
+            return View(ProdectServes.Instance.Getprodects());
         }
 
         public PartialViewResult prodectTable(string Search)
         {
-            var prodect = ProdectServes.Getprodects();
+            var prodect = ProdectServes.Instance.Getprodects();
             if (string.IsNullOrEmpty(Search) == false)
             {
                 prodect = prodect.Where(p => p.Name != null && p.Name.ToLower().Contains(Search.ToLower())).ToList();
@@ -47,7 +43,7 @@ namespace SuitsWeb.Controllers
             }
             
             ProductViewModel productViewModel = new ProductViewModel();
-            productViewModel.Product = ProdectServes.Getoneprodect(id);
+            productViewModel.Product = ProdectServes.Instance.Getoneprodect(id);
 
             if (productViewModel.Product == null)
             {
@@ -59,7 +55,7 @@ namespace SuitsWeb.Controllers
         // GET: Prodects/Create
         public ActionResult Create()
         {
-            var categorys = CatagorySereves.GetCategories();
+            var categorys = CatagorySereves.Instance.GetCategories();
             var viewModel = new VMProductCategory
             {
                 categories = categorys
@@ -75,14 +71,14 @@ namespace SuitsWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                ProdectServes.Saveprodects(prodect);
+                ProdectServes.Instance.Saveprodects(prodect);
                 return RedirectToAction("prodectTable");
             }
             else
             {
                 return new HttpStatusCodeResult(500);
             }
-            //var categorys = CatagorySereves.GetCategories();
+            //var categorys = CatagorySereves.Instance.GetCategories();
             //var viewModel = new VMProductCategory
             //{
             //    categories = categorys
@@ -98,12 +94,12 @@ namespace SuitsWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Prodect prodect = ProdectServes.Getoneprodect(id);
+            Prodect prodect = ProdectServes.Instance.Getoneprodect(id);
             if (prodect == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.categoryID = new SelectList(CatagorySereves.GetCategories(), "ID", "Name", prodect.categoryID);
+            ViewBag.categoryID = new SelectList(CatagorySereves.Instance.GetCategories(), "ID", "Name", prodect.categoryID);
             return PartialView(prodect);
         }
 
@@ -114,10 +110,10 @@ namespace SuitsWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                ProdectServes.Updateprodects(prodect);
+                ProdectServes.Instance.Updateprodects(prodect);
                 return RedirectToAction("prodectTable");
             }
-            ViewBag.categoryID = new SelectList(CatagorySereves.GetCategories(), "ID", "Name", prodect.categoryID);
+            ViewBag.categoryID = new SelectList(CatagorySereves.Instance.GetCategories(), "ID", "Name", prodect.categoryID);
             return PartialView(prodect);
         }
 
@@ -126,7 +122,7 @@ namespace SuitsWeb.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            ProdectServes.Deleteprodects(id);
+            ProdectServes.Instance.Deleteprodects(id);
             return RedirectToAction("prodectTable");
         }
 
