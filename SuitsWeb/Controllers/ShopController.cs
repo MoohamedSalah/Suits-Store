@@ -60,6 +60,7 @@ namespace SuitsWeb.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult Index(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryID, int? sortBy, int? pageNo)
         {
             var pageSize = ConfigurationsService.Instance.ShopPageSize();
@@ -117,6 +118,7 @@ namespace SuitsWeb.Controllers
 
                 Order newOrder = new Order();
                 newOrder.UserID = User.Identity.GetUserId();
+                newOrder.UserName= User.Identity.GetUserName();
                 newOrder.OrderedAt = DateTime.Now;
                 newOrder.Status = "Pending";
                 newOrder.TotalAmount = boughtProducts.Sum(x => x.prise * productQuantities.Where(productID => productID == x.ID).Count());

@@ -180,9 +180,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010191755138_migrated.cs" />
-    <Compile Include="Migrations\202010191755138_migrated.Designer.cs">
-      <DependentUpon>202010191755138_migrated.cs</DependentUpon>
+    <Compile Include="Migrations\202010201611422_Initial.cs" />
+    <Compile Include="Migrations\202010201611422_Initial.Designer.cs">
+      <DependentUpon>202010201611422_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -406,6 +406,8 @@
     <Content Include="modaz-Style\images\blog\new-lastest-8-370x280.jpg" />
     <Content Include="modaz-Style\images\blog\new-lastest-9-370x280.jpg" />
     <Content Include="modaz-Style\images\blog\search_icon.png" />
+    <Content Include="modaz-Style\images\gallery\18.jpg" />
+    <Content Include="modaz-Style\images\gallery\banner-abiti-new-sm.jpg" />
     <Content Include="modaz-Style\images\gallery\gallery-1-870x377.jpg" />
     <Content Include="modaz-Style\images\gallery\gallery-2-870x377.jpg" />
     <Content Include="modaz-Style\images\image-box\imgbox-1-1173x620.jpg" />
@@ -661,6 +663,7 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="modaz-Style\images\gallery\man-expensive-tailored-suit-sitting-260nw-1017930790.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -832,8 +835,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010191755138_migrated.resx">
-      <DependentUpon>202010191755138_migrated.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010201611422_Initial.resx">
+      <DependentUpon>202010201611422_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -808,20 +808,7 @@
         activePattern();
     };
 
-    var updateCartProducts = function () {
-        var cartProducts;
-        var existingCookieData = $.cookie('CartProducts');
-
-        if (existingCookieData != undefined && existingCookieData != "" && existingCookieData != null) {
-            cartProducts = existingCookieData.split('-');
-        }
-        else {
-            cartProducts = [];
-        }
-
-        $("#cartProductsCount").html(cartProducts.length);
-    };
-
+   
     // Dom Ready
     $(function () {
         updateCartProducts();
@@ -838,7 +825,7 @@
         countDown();
         flatCounter();
         googleMap();
-        flatPrice();
+        //flatPrice();
         flatFilterBox();
         flatShopSearch();
         topSearch();
@@ -855,3 +842,16 @@
     });
 })(jQuery);
 
+var updateCartProducts = function () {
+    var cartProducts;
+    var existingCookieData = $.cookie('CartProducts');
+
+    if (existingCookieData != undefined && existingCookieData != "" && existingCookieData != null) {
+        cartProducts = existingCookieData.split('-');
+    }
+    else {
+        cartProducts = [];
+    }
+
+    $("#cartProductsCount").html(cartProducts.length);
+};

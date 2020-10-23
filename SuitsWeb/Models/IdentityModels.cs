@@ -24,7 +24,7 @@ namespace SuitsWeb.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("SuitesDBConection", throwIfV1Schema: false)
         {
         }
 

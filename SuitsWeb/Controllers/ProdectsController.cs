@@ -33,7 +33,7 @@ namespace SuitsWeb.Controllers
             return PartialView(prodect);
 
         }
-
+        [Authorize]
         // GET: Prodects/Details/5
         public ActionResult Details(int? id)
         {

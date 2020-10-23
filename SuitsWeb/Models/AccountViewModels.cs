@@ -48,6 +48,7 @@ namespace SuitsWeb.Models
 
     public class LoginViewModel
     {
+       
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]

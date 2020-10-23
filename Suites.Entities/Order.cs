@@ -16,5 +16,6 @@ namespace Suites.Entities
         public decimal TotalAmount { get; set; }
 
         public virtual List<OrderItem> OrderItems { get; set; }
+        public string UserName { get; set; }
     }
 }
