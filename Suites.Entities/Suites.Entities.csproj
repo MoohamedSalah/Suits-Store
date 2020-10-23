@@ -46,6 +46,8 @@
     <Compile Include="Category.cs" />
     <Compile Include="Categorys.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderItem.cs" />
     <Compile Include="Prodect.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

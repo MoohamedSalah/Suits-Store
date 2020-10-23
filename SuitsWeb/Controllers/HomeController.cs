@@ -11,13 +11,11 @@ namespace SuitsWeb.Controllers
 {
     public class HomeController : Controller
     {
-      
-        CatagorySereves CatagorySereves = new CatagorySereves();
         public ActionResult Index()
         {
             var vMCategotryPoductHome = new VMCategotryPoductHome();
 
-            vMCategotryPoductHome.FeaturedCategories = CatagorySereves.GetCategoriesFeature();
+            vMCategotryPoductHome.FeaturedCategories = CatagorySereves.Instance.GetCategoriesFeature();
 
 
             return View(vMCategotryPoductHome);

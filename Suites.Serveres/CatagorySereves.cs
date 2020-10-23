@@ -12,6 +12,21 @@ namespace Suites.Serveres
  
     public class CatagorySereves
     {
+        #region Singleton
+        public static CatagorySereves Instance
+        {
+            get
+            {
+                if (instance == null) instance = new CatagorySereves();
+
+                return instance;
+            }
+        }
+        private static CatagorySereves instance { get; set; }
+        private CatagorySereves()
+        {
+        }
+        #endregion
         public List<Category> GetCategories ()
         {
             using (var db = new SuitDBContext()) 
@@ -60,6 +75,7 @@ namespace Suites.Serveres
 
             }
         }
+
         public void  DeleteCategories(int ID)
         {
             using (var db = new SuitDBContext())
@@ -72,5 +88,12 @@ namespace Suites.Serveres
 
         }
 
+        public List<Category> GetFeaturedCategories()
+        {
+            using (var context = new SuitDBContext())
+            {
+                return context.categories.Where(x => x.ISFeatcher  && x.ImageURL != null).ToList();
+            }
+        }
     }
 }

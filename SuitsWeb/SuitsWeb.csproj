@@ -167,10 +167,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Code\SortBy.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProdectsController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -178,13 +180,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010201611422_Initial.cs" />
+    <Compile Include="Migrations\202010201611422_Initial.Designer.cs">
+      <DependentUpon>202010201611422_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\CheckoutViewModel.cs" />
+    <Compile Include="ViewModel\FilterProductsViewModel.cs" />
+    <Compile Include="ViewModel\OrderDetailsViewModel.cs" />
+    <Compile Include="ViewModel\OrdersViewModel.cs" />
     <Compile Include="ViewModel\ProductsWidgetViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="ViewModel\VMCategotryPoductHome.cs" />
     <Compile Include="ViewModel\VMCheckout.cs" />
     <Compile Include="ViewModel\VMProductCategory.cs" />
@@ -394,6 +406,8 @@
     <Content Include="modaz-Style\images\blog\new-lastest-8-370x280.jpg" />
     <Content Include="modaz-Style\images\blog\new-lastest-9-370x280.jpg" />
     <Content Include="modaz-Style\images\blog\search_icon.png" />
+    <Content Include="modaz-Style\images\gallery\18.jpg" />
+    <Content Include="modaz-Style\images\gallery\banner-abiti-new-sm.jpg" />
     <Content Include="modaz-Style\images\gallery\gallery-1-870x377.jpg" />
     <Content Include="modaz-Style\images\gallery\gallery-2-870x377.jpg" />
     <Content Include="modaz-Style\images\image-box\imgbox-1-1173x620.jpg" />
@@ -649,6 +663,7 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="modaz-Style\images\gallery\man-expensive-tailored-suit-sitting-260nw-1017930790.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -736,6 +751,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -746,7 +762,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -784,6 +799,9 @@
     <Content Include="Views\Shop\Checkout.cshtml" />
     <Content Include="Views\Widgests\Products.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Shop\FilterProducts.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -815,6 +833,11 @@
       <Project>{c2014a39-0d5c-4c08-b2eb-436c690ccc48}</Project>
       <Name>Suites.Serveres</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010201611422_Initial.resx">
+      <DependentUpon>202010201611422_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

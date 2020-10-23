@@ -72,6 +72,14 @@
     <Compile Include="Migrations\202009272249504_imageUrltoproduct.Designer.cs">
       <DependentUpon>202009272249504_imageUrltoproduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010191729130_addTableOrderANDOrederitem.cs" />
+    <Compile Include="Migrations\202010191729130_addTableOrderANDOrederitem.Designer.cs">
+      <DependentUpon>202010191729130_addTableOrderANDOrederitem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010231844168_addUserName.cs" />
+    <Compile Include="Migrations\202010231844168_addUserName.Designer.cs">
+      <DependentUpon>202010231844168_addUserName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SuitDBContext.cs" />
@@ -98,6 +106,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009272249504_imageUrltoproduct.resx">
       <DependentUpon>202009272249504_imageUrltoproduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010191729130_addTableOrderANDOrederitem.resx">
+      <DependentUpon>202010191729130_addTableOrderANDOrederitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010231844168_addUserName.resx">
+      <DependentUpon>202010231844168_addUserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

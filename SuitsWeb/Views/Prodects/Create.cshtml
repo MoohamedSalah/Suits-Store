@@ -75,22 +75,24 @@
 
 
     $('#createBtn').click(function () {
-        if ($('#createProduct').valid())
-        {
-          $.ajax({
-            type: 'POST',
-              url: '/Prodects/Create',
-            data: $('#createProduct').serialize()
-          })
-            .done(function (response) {
-                $('#tablePro').html(response);
-                $("#opeartionArea").html("");
-                focusAction("tablePro");
+        if ($('#createProduct').valid()) {
+            $.ajax({
+                type: 'POST',
+                url: '/Prodects/Create',
+                data: $('#createProduct').serialize()
             })
-            .fail(function () {
+                .done(function (response) {
+                    $('#tablePro').html(response);
+                    $("#opeartionArea").html("");
+                    focusAction("tablePro");
+                })
+                .fail(function () {
 
-            });
-        };
+                });
+        } else
+        {
+            focusAction("createProduct");
+        }
 
 
     });

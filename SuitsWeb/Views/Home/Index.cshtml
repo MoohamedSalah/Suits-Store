@@ -15,7 +15,7 @@
             <!-- Slide 1 -->
             <li data-transition="random">
                 <!-- Main Image -->
-                <img src="~/modaz-Style/images/slider/slider-bg-5.jpg" alt="" data-bgposition="center center" data-no-retina>
+                <img src="~/modaz-Style/images/gallery/18.jpg" alt="" data-bgposition="center center" data-no-retina>
 
                 <!-- Layers -->
                 <div class="tp-caption tp-resizeme text-white font-weight-300"
@@ -93,14 +93,14 @@
                      data-splitin="none"
                      data-splitout="none"
                      data-responsive_offset="on">
-                    <a href="#" class="themesflat-button has-padding-36 bg-accent has-shadow"><span>SHOP NOW</span></a>
+                    <a href="@Url.Action("Index","Shop")" class="themesflat-button has-padding-36 bg-accent has-shadow"><span>SHOP NOW</span></a>
                 </div>
             </li>
             <!-- /End Slide 1 -->
             <!-- Slide 2 -->
             <li data-transition="random">
                 <!-- Main Image -->
-                <img src="~/modaz-Style/images/slider/slider-bg-1.jpg" alt="" data-bgposition="center center" data-no-retina>
+                <img src="~/modaz-Style/images/gallery/banner-abiti-new-sm.jpg" alt="" data-bgposition="center center" data-no-retina>
 
                 <!-- Layers -->
                 <div class="tp-caption tp-resizeme text-333 font-weight-400 text-right"
@@ -178,7 +178,7 @@
                      data-splitin="none"
                      data-splitout="none"
                      data-responsive_offset="on">
-                    <a href="#" class="themesflat-button bg-accent has-shadow"><span>BY NOW</span></a>
+                    <a href="@Url.Action("Index","Shop")" class="themesflat-button bg-accent has-shadow"><span>BY NOW</span></a>
                 </div>
             </li>
             <!-- /End Slide 2 -->
@@ -199,7 +199,9 @@
                                 <div class="thumb">
                                     <img src="@firstCategory.ImageURL" alt="Image" width="200" height="200">
                                     <div class="elm-btn">
-                                        <a href="#" class="themesflat-button bg-white width-150">@firstCategory.Name</a>
+                                        <a href="@Url.Action("Index","Shop",new { categoryID=firstCategory.ID})"
+                                           class="themesflat-button bg-white width-150">
+                                        @firstCategory.Name</a>
                                     </div>
                                     <div class="overlay-effect bg-color-1"></div>
                                 </div>
@@ -217,7 +219,7 @@
                                 <div class="thumb">
                                     <img src="@secondCategory.ImageURL" alt="Image" width="200" height="200">
                                     <div class="elm-btn">
-                                        <a href="#" class="themesflat-button bg-white width-150">@secondCategory.Name</a>
+                                        <a href="@Url.Action("Index","Shop",new { categoryID=secondCategory.ID})" class="themesflat-button bg-white width-150">@secondCategory.Name</a>
                                     </div>
                                     <div class="overlay-effect bg-color-1"></div>
                                 </div>
@@ -232,7 +234,7 @@
                                 <div class="thumb">
                                     <img src="@thirdCategory.ImageURL" alt="Image" width="200" height="200">
                                     <div class="elm-btn">
-                                        <a href="#" class="themesflat-button bg-white width-150">@thirdCategory.Name</a>
+                                        <a href="@Url.Action("Index","Shop",new { categoryID=thirdCategory.ID})" class="themesflat-button bg-white width-150">@thirdCategory.Name</a>
                                     </div>
                                     <div class="overlay-effect bg-color-1"></div>
                                 </div>
@@ -250,7 +252,7 @@
                                 <div class="thumb">
                                     <img src="@fourthCategory.ImageURL" alt="Image" width="200" height="200">
                                     <div class="elm-btn">
-                                        <a href="#" class="themesflat-button bg-white width-150">@fourthCategory.Name</a>
+                                        <a href="@Url.Action("Index","Shop",new { categoryID=fourthCategory.ID})" class="themesflat-button bg-white width-150">@fourthCategory.Name</a>
                                     </div>
                                     <div class="overlay-effect bg-color-1"></div>
                                 </div>
@@ -287,11 +289,11 @@
                 <div class="flat-animation-block">
                     <div class="title-section width-before-17 bg-before-white margin-bottom-14">
                         <div class="sup-title"><span>NEW TREND 2018</span></div>
-                        <h2 class="title font-size-52 line-height-76">Women‘s Collection</h2>
+                        <h2 class="title font-size-52 line-height-76">All Collection</h2>
                         <div class="sub-title"><span>Big Sale of this Week</span></div>
                     </div>
                     <div class="elm-btn text-center">
-                        <a href="#" class="themesflat-button bg-accent has-padding-36">Shop Now</a>
+                        <a href="@Url.Action("Index","Shop")" class="themesflat-button bg-accent has-padding-36">Shop Now</a>
                     </div>
                 </div><!-- /.flat-animation-block -->
             </div>
@@ -324,7 +326,7 @@
                             <i class="fa fa-truck"></i>
                         </div>
                         <div class="text-wrap">
-                            <h5 class="heading"><a href="#">Free Shipping</a></h5>
+                            <h5 class="heading"><a href="@Url.Action("Index","Shop")">Free Shipping</a></h5>
                             <p class="desc">Free Shipping on order over $99</p>
                         </div>
                     </div>
@@ -337,7 +339,7 @@
                             <i class="fa fa-money"></i>
                         </div>
                         <div class="text-wrap">
-                            <h5 class="heading"><a href="#">Cash On Delivery</a></h5>
+                            <h5 class="heading"><a href="@Url.Action("Index","Shop")">Cash On Delivery</a></h5>
                             <p class="desc">The Internet Trend To Repeat</p>
                         </div>
                     </div>
@@ -350,7 +352,7 @@
                             <i class="fa fa-gift"></i>
                         </div>
                         <div class="text-wrap">
-                            <h5 class="heading"><a href="#">Gift For All</a></h5>
+                            <h5 class="heading"><a href="@Url.Action("Index","Shop")">Gift For All</a></h5>
                             <p class="desc">Receive Gift When Subscribe</p>
                         </div>
                     </div>
@@ -363,7 +365,7 @@
                             <i class="fa fa-clock-o"></i>
                         </div>
                         <div class="text-wrap">
-                            <h5 class="heading"><a href="#">Opening All Week</a></h5>
+                            <h5 class="heading"><a href="@Url.Action("Index","Shop")">Opening All Week</a></h5>
                             <p class="desc">6.00 am - 17.00pm</p>
                         </div>
                     </div>
@@ -374,7 +376,7 @@
 </section>
 <!-- END ICON BOX -->
 <!-- NEW LATEST -->
-<section class="flat-row row-new-latest">
+<!--<section class="flat-row row-new-latest">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -390,156 +392,156 @@
                                     <div class="content-post text-center">
                                         <div class="title-post">
                                             <h2><a href="blog-detail.html">Trend Of 2018</a></h2>
-                                        </div><!-- /.title-post -->
-                                        <ul class="meta-post">
+                                        </div>--><!-- /.title-post -->
+                                        <!--<ul class="meta-post">
                                             <li class="date">
                                                 OCT 08, 2018
                                             </li>
                                             <li class="author">
                                                 <a href="#">BY ADMIN</a>
                                             </li>
-                                        </ul><!-- /.meta-post -->
-                                        <div class="entry-post">
+                                        </ul>--><!-- /.meta-post -->
+                                        <!--<div class="entry-post">
                                             <p>This is Heading the bank manager long ago won the battle for the heart of...</p>
                                             <div class="more-link">
                                                 <a href="blog-detail.html">READ MORE</a>
                                             </div>
                                         </div>
-                                    </div><!-- /.content-post -->
-                                    <div class="overlay-effect bg-overlay-black"></div>
+                                    </div>--><!-- /.content-post -->
+                                    <!--<div class="overlay-effect bg-overlay-black"></div>
                                 </div>
-                            </article><!-- /.post -->
-                            <article class="post clearfix">
+                            </article>--><!-- /.post -->
+                            <!--<article class="post clearfix">
                                 <div class="featured-post data-effect-item">
                                     <img src="~/modaz-Style/images/blog/new-lastest-2-370x280.jpg" alt="image">
                                     <div class="content-post text-center">
                                         <div class="title-post">
                                             <h2><a href="blog-detail.html">Trend Of 2018</a></h2>
-                                        </div><!-- /.title-post -->
-                                        <ul class="meta-post">
+                                        </div>--><!-- /.title-post -->
+                                        <!--<ul class="meta-post">
                                             <li class="date">
                                                 OCT 08, 2018
                                             </li>
                                             <li class="author">
                                                 <a href="#">BY ADMIN</a>
                                             </li>
-                                        </ul><!-- /.meta-post -->
-                                        <div class="entry-post">
+                                        </ul>--><!-- /.meta-post -->
+                                        <!--<div class="entry-post">
                                             <p>This is Heading the bank manager long ago won the battle for the heart of...</p>
                                             <div class="more-link">
                                                 <a href="blog-detail.html">READ MORE</a>
                                             </div>
                                         </div>
-                                    </div><!-- /.content-post -->
-                                    <div class="overlay-effect bg-overlay-black"></div>
+                                    </div>--><!-- /.content-post -->
+                                    <!--<div class="overlay-effect bg-overlay-black"></div>
                                 </div>
-                            </article><!-- /.post -->
-                            <article class="post clearfix">
+                            </article>--><!-- /.post -->
+                            <!--<article class="post clearfix">
                                 <div class="featured-post data-effect-item">
                                     <img src="~/modaz-Style/images/blog/new-lastest-3-370x280.jpg" alt="image">
                                     <div class="content-post text-center">
                                         <div class="title-post">
                                             <h2><a href="blog-detail.html">Trend Of 2018</a></h2>
-                                        </div><!-- /.title-post -->
-                                        <ul class="meta-post">
+                                        </div>--><!-- /.title-post -->
+                                        <!--<ul class="meta-post">
                                             <li class="date">
                                                 OCT 08, 2018
                                             </li>
                                             <li class="author">
                                                 <a href="#">BY ADMIN</a>
                                             </li>
-                                        </ul><!-- /.meta-post -->
-                                        <div class="entry-post">
+                                        </ul>--><!-- /.meta-post -->
+                                        <!--<div class="entry-post">
                                             <p>This is Heading the bank manager long ago won the battle for the heart of...</p>
                                             <div class="more-link">
                                                 <a href="blog-detail.html">READ MORE</a>
                                             </div>
                                         </div>
-                                    </div><!-- /.content-post -->
-                                    <div class="overlay-effect bg-overlay-black"></div>
+                                    </div>--><!-- /.content-post -->
+                                    <!--<div class="overlay-effect bg-overlay-black"></div>
                                 </div>
-                            </article><!-- /.post -->
-                            <article class="post clearfix">
+                            </article>--><!-- /.post -->
+                            <!--<article class="post clearfix">
                                 <div class="featured-post data-effect-item">
                                     <img src="~/modaz-Style/images/blog/new-lastest-1-370x280.jpg" alt="image">
                                     <div class="content-post text-center">
                                         <div class="title-post">
                                             <h2><a href="blog-detail.html">Trend Of 2018</a></h2>
-                                        </div><!-- /.title-post -->
-                                        <ul class="meta-post">
+                                        </div>--><!-- /.title-post -->
+                                        <!--<ul class="meta-post">
                                             <li class="date">
                                                 OCT 08, 2018
                                             </li>
                                             <li class="author">
                                                 <a href="#">BY ADMIN</a>
                                             </li>
-                                        </ul><!-- /.meta-post -->
-                                        <div class="entry-post">
+                                        </ul>--><!-- /.meta-post -->
+                                        <!--<div class="entry-post">
                                             <p>This is Heading the bank manager long ago won the battle for the heart of...</p>
                                             <div class="more-link">
                                                 <a href="blog-detail.html">READ MORE</a>
                                             </div>
                                         </div>
-                                    </div><!-- /.content-post -->
-                                    <div class="overlay-effect bg-overlay-black"></div>
+                                    </div>--><!-- /.content-post -->
+                                    <!--<div class="overlay-effect bg-overlay-black"></div>
                                 </div>
-                            </article><!-- /.post -->
-                            <article class="post clearfix">
+                            </article>--><!-- /.post -->
+                            <!--<article class="post clearfix">
                                 <div class="featured-post data-effect-item">
                                     <img src="~/modaz-Style/images/blog/new-lastest-2-370x280.jpg" alt="image">
                                     <div class="content-post text-center">
                                         <div class="title-post">
                                             <h2><a href="blog-detail.html">Trend Of 2018</a></h2>
-                                        </div><!-- /.title-post -->
-                                        <ul class="meta-post">
+                                        </div>--><!-- /.title-post -->
+                                        <!--<ul class="meta-post">
                                             <li class="date">
                                                 OCT 08, 2018
                                             </li>
                                             <li class="author">
                                                 <a href="#">BY ADMIN</a>
                                             </li>
-                                        </ul><!-- /.meta-post -->
-                                        <div class="entry-post">
+                                        </ul>--><!-- /.meta-post -->
+                                        <!--<div class="entry-post">
                                             <p>This is Heading the bank manager long ago won the battle for the heart of...</p>
                                             <div class="more-link">
                                                 <a href="blog-detail.html">READ MORE</a>
                                             </div>
                                         </div>
-                                    </div><!-- /.content-post -->
-                                    <div class="overlay-effect bg-overlay-black"></div>
+                                    </div>--><!-- /.content-post -->
+                                    <!--<div class="overlay-effect bg-overlay-black"></div>
                                 </div>
-                            </article><!-- /.post -->
-                            <article class="post clearfix">
+                            </article>--><!-- /.post -->
+                            <!--<article class="post clearfix">
                                 <div class="featured-post data-effect-item">
                                     <img src="~/modaz-Style/images/blog/new-lastest-3-370x280.jpg" alt="image">
                                     <div class="content-post text-center">
                                         <div class="title-post">
                                             <h2><a href="blog-detail.html">Trend Of 2018</a></h2>
-                                        </div><!-- /.title-post -->
-                                        <ul class="meta-post">
+                                        </div>--><!-- /.title-post -->
+                                        <!--<ul class="meta-post">
                                             <li class="date">
                                                 OCT 08, 2018
                                             </li>
                                             <li class="author">
                                                 <a href="#">BY ADMIN</a>
                                             </li>
-                                        </ul><!-- /.meta-post -->
-                                        <div class="entry-post">
+                                        </ul>--><!-- /.meta-post -->
+                                        <!--<div class="entry-post">
                                             <p>This is Heading the bank manager long ago won the battle for the heart of...</p>
                                             <div class="more-link">
                                                 <a href="blog-detail.html">READ MORE</a>
                                             </div>
                                         </div>
-                                    </div><!-- /.content-post -->
-                                    <div class="overlay-effect bg-overlay-black"></div>
+                                    </div>--><!-- /.content-post -->
+                                    <!--<div class="overlay-effect bg-overlay-black"></div>
                                 </div>
-                            </article><!-- /.post -->
-                        </div><!-- /.owl-carousel -->
-                    </div>
+                            </article>--><!-- /.post -->
+                        <!--</div>--><!-- /.owl-carousel -->
+                    <!--</div>
                 </div>
 
             </div>
         </div>
     </div>
-</section>
+</section>-->
 <!-- END NEW LATEST -->

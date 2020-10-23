@@ -67,8 +67,6 @@
                     <input type="button" data-id="@item.ID" class="btn btn-warning Edite" value="Edite" />
                     |
                     <input type="button" data-id="@item.ID" class="btn btn-danger Delete" value="Delete" />
-                    |
-                    <input type="button" data-id="@item.ID" class="btn btn-primary Carts" value="Add To Cart" />
                 </td>
             </tr>
         }
@@ -126,20 +124,6 @@
 
         });
 
-        var products = [];
-        $(".Carts").click(function () {
-
-            var productID = $(this).attr('data-id');
-
-            products.push(productID);
-
-            $.cookie('CartProducts', products.join('-'), { path: '/' });
-
-            alert("Product added to Cart.");
-        });
-
-
-
         $('.Edite').click(function () {
 
             $.ajax({
@@ -158,23 +142,51 @@
         });
 
         $('.Delete').click(function () {
+            swal({
+                title: "Are you Wont delete this Item",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/Prodects/Delete',
+                            data: { id: parseInt($(this).attr("data-id")) }
+                        })
+                            .done(function (response) {
+                                $('#tablePro').html(response);
+                                focusAction("tablePro");
+                                swal("Record deleted Successfully.", {
+                                    icon: "success",
+                                });
+                            })
+                            .fail({
+                               
+                            });
 
-            var ConfirmDelete = confirm("Are you Wont delete this Item");
 
-            if (ConfirmDelete) {
-                $.ajax({
-                    type: 'POST',
-                    url: '/Prodects/Delete',
-                    data: { id: parseInt($(this).attr("data-id")) }
-                })
-                    .done(function (response) {
-                        $('#tablePro').html(response);
-                        focusAction("tablePro");
-                    })
-                    .fail({
+                    }
 
-                    });
-            }
+                });
+            //var ConfirmDelete = confirm("Are you Wont delete this Item");
+
+            //if (ConfirmDelete) {
+            //    $.ajax({
+            //        type: 'POST',
+            //        url: '/Prodects/Delete',
+            //        data: { id: parseInt($(this).attr("data-id")) }
+            //    })
+            //        .done(function (response) {
+            //            $('#tablePro').html(response);
+            //            focusAction("tablePro");
+            //        })
+            //        .fail({
+
+            //        });
+            //}
 
         });
     });
